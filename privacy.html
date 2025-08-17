@@ -1,116 +1,251 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read the complete privacy policy for MathKit - A secure, offline-first math assistant that respects your privacy." />
-  <title>Privacy Policy - MathKit</title>
-  <style>
-    body {
-      background-color: #f3f4f6;
-      color: #1f2937;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    nav {
-      background-color: #2563eb;
-      padding: 15px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 25px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      font-size: 32px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    p, li {
-      font-size: 18px;
-      line-height: 1.6;
-      text-align: left;
-    }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-    a {
-      color: #2563eb;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="MathKit Privacy Policy — offline-first math app that respects privacy." />
+<title>Privacy Policy — MathKit</title>
+<style>
+  :root{
+    --bg:#f3f4f6; --card:#ffffff; --muted:#6b7280; --text:#0f172a; --accent:#2563eb; --radius:10px; --shadow:0 8px 20px rgba(2,6,23,0.06);
+  }
+  [data-theme="dark"]{ --bg:#071024; --card:#072034; --muted:#98a7bf; --text:#e6eef8; --accent:#4f9bf8; --shadow:0 10px 30px rgba(0,0,0,0.6); }
+  *{box-sizing:border-box}
+  body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0;background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;}
+  header{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35)); border-bottom:1px solid rgba(2,6,23,0.04); position:sticky;top:0;z-index:30}
+  [data-theme="dark"] header{background:linear-gradient(180deg, rgba(8,12,20,0.6), rgba(8,12,20,0.35)); border-bottom:1px solid rgba(255,255,255,0.04)}
+  .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#0ea5a4);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+  nav .links{display:flex;gap:12px;align-items:center}
+  a.link{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
+  a.link:hover{background:rgba(37,99,235,0.06); color:var(--accent)}
+  .controls{display:flex;gap:8px;align-items:center}
+  .btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;border:0;font-weight:700}
+  .muted-btn{background:transparent;border:1px solid rgba(2,6,23,0.06);padding:7px 10px;border-radius:8px;color:var(--muted)}
+  main{max-width:980px;margin:28px auto;padding:18px}
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+  h1{margin:0;font-size:26px}
+  .meta{display:flex;gap:12px;align-items:center;margin-top:8px;color:var(--muted);font-size:14px}
+  .lead{margin-top:14px;color:var(--muted);line-height:1.6}
+  .tool-row{display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap}
+  input[type="search"]{padding:10px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);min-width:220px}
+  .controls-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .accordion{margin-top:18px;border-radius:10px;overflow:hidden}
+  .section{border-top:1px solid rgba(2,6,23,0.04)}
+  .section button.head{width:100%;text-align:left;padding:16px;border:0;background:transparent;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+  .panel{padding:0 16px 18px 16px;display:none;color:var(--muted);line-height:1.6}
+  .panel.open{display:block}
+  .small{font-size:13px;color:var(--muted)}
+  footer{max-width:980px;margin:18px auto;padding:14px;text-align:center;color:var(--muted)}
+  .topline{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+  @media (max-width:700px){ .topline{flex-direction:column;align-items:flex-start} .controls-right{margin-left:0}}
+</style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </nav>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <!-- <p>Effective Date: January 1, 2025</p> -->
 
-    <p>
-      At <strong>MathKit</strong>, we take your privacy seriously. This Privacy Policy outlines what data we do or do not collect, how it is used, and your rights regarding your information.
-    </p>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">MK</div>
+      <div>
+        <div style="font-weight:800">MathKit</div>
+        <div style="font-size:12px;color:var(--muted)">Privacy Policy</div>
+      </div>
+    </div>
 
-    <h2>1. Information Collection</h2>
-    <ul>
-      <li><strong>No Personal Data Collected:</strong> MathKit does not collect, store, or transmit any personal information such as name, email, address, or device ID.</li>
-      <li><strong>No Usage Analytics:</strong> We do not track your app usage, behavior, or preferences.</li>
-    </ul>
+    <div class="links" role="navigation" aria-label="main">
+      <a class="link" href="index.html">Home</a>
+      <a class="link" href="index.html#faq">FAQ</a>
+      <a class="link" href="index.html#features">Features</a>
+      <a class="link" href="https://indusappstore.com/app/mathkit" target="_blank">Get on Indus</a>
+    </div>
 
-    <h2>2. Data Security & Offline Usage</h2>
-    <ul>
-      <li><strong>Offline-Only:</strong> The app works entirely offline and does not require an internet connection.</li>
-      <li><strong>No Server Communication:</strong> All math operations and user interactions are handled on your local device.</li>
-    </ul>
-
-    <h2>3. Permissions</h2>
-    <ul>
-      <li><strong>Minimal Permissions:</strong> If storage or camera access is requested in future updates, it will only be to enable key features like saving solutions or scanning math problems from paper.</li>
-      <li><strong>No Background Tracking:</strong> The app does not access your location, contacts, or any background data.</li>
-    </ul>
-
-    <h2>4. Children’s Privacy</h2>
-    <ul>
-      <li><strong>Child-Friendly:</strong> MathKit is safe for users of all ages, including children.</li>
-      <li><strong>COPPA Compliance:</strong> We comply with the Children’s Online Privacy Protection Act (COPPA) and do not knowingly collect any data from users under 13.</li>
-    </ul>
-
-    <h2>5. Advertising & Monetization</h2>
-    <ul>
-      <li><strong>Ad-Free Experience:</strong> MathKit is free of ads and third-party SDKs.</li>
-      <li><strong>No In-App Purchases:</strong> We don’t offer in-app purchases that collect billing information.</li>
-    </ul>
-
-    <h2>6. Data Sharing & Third Parties</h2>
-    <ul>
-      <li><strong>No Third-Party Access:</strong> We do not share any data with external parties, advertisers, analytics providers, or affiliates.</li>
-    </ul>
-
-    <h2>7. Policy Updates</h2>
-    <p>
-      This policy may be updated to reflect changes in the app’s functionality. You will be notified of any significant changes via the app or this website.
-    </p>
-
-    <h2>8. Contact Us</h2>
-    <p>
-      If you have any questions, concerns, or feedback regarding this Privacy Policy, please contact us at:<br/>
-      <a href="mailto:devshubham652@gmail.com">devshubham652@gmail.com</a>
-    </p>
+    <div class="controls">
+      <button id="printBtn" class="muted-btn" title="Print policy">Print</button>
+      <button id="themeToggle" class="muted-btn" title="Toggle dark mode">🌙</button>
+    </div>
   </div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="topline">
+      <div>
+        <h1>Privacy Policy</h1>
+        <div class="meta small">MathKit — Version <strong id="version">1.0</strong> • Last updated: <strong id="lastUpdated">2025-08-17</strong></div>
+      </div>
+
+      <div class="controls-right small">
+        <label for="search">Search policy</label>
+        <input id="search" type="search" placeholder="Search keywords (e.g. data, offline)" aria-label="Search privacy policy" />
+        <button id="expandAll" class="muted-btn" title="Expand all">Expand all</button>
+        <button id="collapseAll" class="muted-btn" title="Collapse all">Collapse all</button>
+      </div>
+    </div>
+
+    <p class="lead">This Privacy Policy explains how MathKit handles information. MathKit is an offline-first app — we prioritize user privacy and do not collect personal information.</p>
+
+    <div class="accordion" id="policyAccordion" role="region" aria-live="polite">
+
+      <section class="section" id="info-collection">
+        <button class="head" aria-expanded="false">1. Information Collection <span class="small">What we (don’t) collect</span></button>
+        <div class="panel">
+          <p>MathKit does <strong>not</strong> collect, store, or transmit personal information such as name, email, phone number, or device identifiers by default.</p>
+          <ul>
+            <li><strong>No analytics:</strong> We do not embed analytics SDKs or track in-app behavior.</li>
+            <li><strong>No personal data:</strong> No login, no user accounts, no remote profiles are required for core features.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="offline-data">
+        <button class="head" aria-expanded="false">2. Data Security & Offline Usage <span class="small">How data is handled</span></button>
+        <div class="panel">
+          <p>All operations happen locally on the device. MathKit is designed to work offline so your data never leaves your device.</p>
+          <ul>
+            <li><strong>Local calculations:</strong> Solver and formulas run on-device; results are not sent to servers.</li>
+            <li><strong>Optional features:</strong> If we add optional backup/sync in future, it will be clearly disclosed and opt-in only.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="permissions">
+        <button class="head" aria-expanded="false">3. Permissions <span class="small">When we ask for access</span></button>
+        <div class="panel">
+          <p>MathKit requests minimal permissions. Any permission requested (for example, to save files or use camera for a scanner feature) will be explicitly asked and justified within the app.</p>
+          <ul>
+            <li><strong>Storage:</strong> May be used to save user-created notes or exports (explicit opt-in).</li>
+            <li><strong>Camera:</strong> Only if you enable a scanning feature — camera access will be optional and local.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="children">
+        <button class="head" aria-expanded="false">4. Children’s Privacy <span class="small">COPPA & safety</span></button>
+        <div class="panel">
+          <p>We do not knowingly collect personal data from children under 13. MathKit is designed to be safe for classroom and home use.</p>
+          <p>If you believe we have inadvertently collected information about a child, contact us immediately.</p>
+        </div>
+      </section>
+
+      <section class="section" id="ads-monetization">
+        <button class="head" aria-expanded="false">5. Advertising & Monetization <span class="small">How MathKit is funded</span></button>
+        <div class="panel">
+          <p>At launch, MathKit is ad-free and contains no third-party SDKs. We may consider ethical monetization in future (paid upgrades), and users will be informed well in advance.</p>
+        </div>
+      </section>
+
+      <section class="section" id="sharing">
+        <button class="head" aria-expanded="false">6. Data Sharing & Third Parties <span class="small">Who can see your data</span></button>
+        <div class="panel">
+          <p>We do not share any personal data with third parties. Any external service used (for example, cloud backup in future) will be opt-in and documented in-app.</p>
+        </div>
+      </section>
+
+      <section class="section" id="updates">
+        <button class="head" aria-expanded="false">7. Policy Updates <span class="small">How we notify changes</span></button>
+        <div class="panel">
+          <p>This Policy may be updated periodically. We will note the last updated date at the top of this page and inform users via app release notes when changes are material.</p>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <button class="head" aria-expanded="false">8. Contact Us <span class="small">Questions or concerns</span></button>
+        <div class="panel">
+          <p>If you have any questions or want to request deletion of optional backups (if enabled later), contact us at:</p>
+          <p><a id="contactMail" href="mailto:devshubham652@gmail.com">devshubham652@gmail.com</a></p>
+        </div>
+      </section>
+
+    </div>
+
+    <div style="margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <button id="acceptBtn" class="btn">Acknowledge</button>
+      <button id="reportBtn" class="muted-btn">Report Issue</button>
+      <div style="margin-left:auto" class="small">Policy version <strong id="ver2">1.0</strong></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="small">© 2025 MathKit • Made in India 🇮🇳 • <a href="index.html">Home</a></div>
+</footer>
+
+<script>
+  // theme
+  const themeToggle = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('mk-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light');
+  themeToggle.textContent = stored === 'dark' ? '☀' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('mk-theme', next);
+    themeToggle.textContent = next === 'dark' ? '☀' : '🌙';
+  });
+
+  // accordion behavior
+  function toggleSection(btn, open) {
+    const panel = btn.nextElementSibling;
+    if(open === undefined) open = !panel.classList.contains('open');
+    panel.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.accordion .head').forEach(btn => {
+    btn.addEventListener('click', () => toggleSection(btn));
+  });
+
+  document.getElementById('expandAll').addEventListener('click', () => {
+    document.querySelectorAll('.accordion .head').forEach(btn => toggleSection(btn, true));
+  });
+  document.getElementById('collapseAll').addEventListener('click', () => {
+    document.querySelectorAll('.accordion .head').forEach(btn => toggleSection(btn, false));
+  });
+
+  // search inside panels
+  const search = document.getElementById('search');
+  search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    document.querySelectorAll('.section').forEach(sec => {
+      const text = sec.innerText.toLowerCase();
+      if(!q) {
+        sec.style.display = ''; // show
+      } else {
+        sec.style.display = text.includes(q) ? '' : 'none';
+      }
+    });
+  });
+
+  // print
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  // acknowledgement / report
+  document.getElementById('acceptBtn').addEventListener('click', () => {
+    alert('Thanks — your acknowledgement has been noted. (Local demo only)');
+  });
+  document.getElementById('reportBtn').addEventListener('click', () => {
+    window.location.href = 'mailto:devshubham652@gmail.com?subject=MathKit%20Privacy%20Issue';
+  });
+
+  // fill version/last updated automatically (update values here)
+  const version = '1.0';
+  const lastUpdated = '2025-08-17';
+  document.getElementById('version').textContent = version;
+  document.getElementById('ver2').textContent = version;
+  document.getElementById('lastUpdated').textContent = lastUpdated;
+
+  // accessibility: keyboard for accordion
+  document.querySelectorAll('.accordion .head').forEach(btn => {
+    btn.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSection(btn); }
+    });
+  });
+
+  // simple client-side sanity check to ensure accessible page (console)
+  console.info('Privacy page loaded — MathKit policy (interactive demo).');
+</script>
+
 </body>
 </html>

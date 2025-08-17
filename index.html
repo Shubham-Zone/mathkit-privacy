@@ -1,168 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MathKit is a smart, offline math solver tailored for Indian students. Solve algebra, arithmetic, and geometry with ease. No internet, no ads, no data tracking." />
-  <meta name="keywords" content="MathKit, math solver, offline math app, CBSE, ICSE, class 10 math, class 12 formulas, Indian education, no ads, privacy first" />
-  <meta name="author" content="Shubham" />
-  <title>MathKit - Your Offline Math Companion</title>
-  <style>
-    body {
-      background-color: #f9fafb;
-      color: #1f2937;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    nav {
-      background-color: #2563eb;
-      padding: 15px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 30px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-    }
-    h1, h2 {
-      font-weight: bold;
-    }
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-      color: #111827;
-    }
-    h2 {
-      font-size: 26px;
-      margin-top: 30px;
-      color: #2563eb;
-    }
-    p, li {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    ul {
-      margin-top: 10px;
-      padding-left: 20px;
-    }
-    .cta {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .cta a {
-      background-color: #2563eb;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      display: inline-block;
-    }
-    .testimonial {
-      background-color: #f1f5f9;
-      padding: 20px;
-      border-left: 5px solid #2563eb;
-      margin-top: 20px;
-      border-radius: 6px;
-      font-style: italic;
-    }
-    footer {
-      background-color: #e5e7eb;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 14px;
-    }
-    .faq h3 {
-      margin-top: 20px;
-      color: #111827;
-      font-size: 20px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="MathKit — offline math solver for Indian students. No ads, privacy-first, works offline." />
+<title>MathKit — Your Offline Math Companion</title>
+
+<!-- Basic styling + responsive + dark mode -->
+<style>
+  :root{
+    --bg:#f8fafc; --card:#ffffff; --muted:#6b7280; --accent:#2563eb; --accent-2:#0ea5a4; --text:#0f172a;
+    --radius:12px; --shadow:0 10px 30px rgba(2,6,23,0.08);
+  }
+  [data-theme="dark"]{
+    --bg:#0b1220; --card:#071124; --muted:#93a3b8; --accent:#4f9bf8; --accent-2:#2dd4bf; --text:#e6eef8;
+    --shadow: 0 10px 30px rgba(0,0,0,0.55);
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  a{color:inherit;text-decoration:none}
+  header{position:sticky;top:0;backdrop-filter:saturate(120%) blur(6px); background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)); border-bottom:1px solid rgba(2,6,23,0.04); z-index:30}
+  [data-theme="dark"] header{background:linear-gradient(180deg, rgba(10,14,24,0.6), rgba(10,14,24,0.4)); border-bottom:1px solid rgba(255,255,255,0.04)}
+  .navwrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{height:42px;width:42px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px}
+  .navlinks{display:flex;gap:14px;align-items:center}
+  .navlinks a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:600}
+  .navlinks a:hover{background:rgba(37,99,235,0.08); color:var(--accent)}
+  .cta-btn{background:var(--accent); color:white;padding:10px 14px;border-radius:10px;font-weight:700;box-shadow:var(--shadow)}
+  .secondary{background:transparent;border:1px solid rgba(2,6,23,0.05);padding:8px 12px;border-radius:8px;color:var(--muted)}
+  .hamburger{display:none;background:transparent;border:none;font-size:22px;padding:8px}
+  main{max-width:1100px;margin:30px auto;padding:18px}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+  .hero h1{font-size:40px;margin:0 0 14px}
+  .lead{font-size:18px;color:var(--muted);margin:0 0 18px}
+  .feature-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .pill{background:linear-gradient(90deg, rgba(37,99,235,0.1), rgba(14,165,164,0.06)); padding:8px 12px;border-radius:999px;color:var(--accent);font-weight:700;font-size:13px}
+  .btns{display:flex;gap:12px;margin-top:18px}
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .screenshot{width:100%;height:260px;border-radius:10px;background:linear-gradient(180deg,#e6eefc,#fff);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:1px solid rgba(2,6,23,0.04)}
+  .screenshot small{color:var(--muted);font-weight:600}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:10px;border:1px solid rgba(2,6,23,0.03)}
+  .feature h3{margin:8px 0 6px}
+  .faq{margin-top:28px}
+  .accordion{border-radius:10px;overflow:hidden}
+  .accordion button{width:100%;text-align:left;padding:14px 18px;border:0;background:transparent;font-weight:700;border-bottom:1px solid rgba(2,6,23,0.04);cursor:pointer}
+  .accordion .panel{padding:12px 18px;background:linear-gradient(180deg, rgba(0,0,0,0.01), transparent);display:none}
+  .accordion .panel.open{display:block}
+  .subscribe{display:flex;gap:10px;margin-top:18px}
+  input[type="email"]{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);font-size:15px}
+  .small{font-size:13px;color:var(--muted)}
+  footer{margin-top:48px;padding:28px 18px;text-align:center;background:transparent;border-top:1px solid rgba(2,6,23,0.04)}
+  .backtop{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;border-radius:999px;padding:10px 12px;display:none;box-shadow:var(--shadow);cursor:pointer}
+  .screens{display:flex;gap:12px;flex-direction:column;align-items:center}
+  .thumbs{display:flex;gap:10px;margin-top:12px}
+  .thumb{width:82px;height:150px;border-radius:8px;background:linear-gradient(180deg,#fff,#eef4ff);border:1px solid rgba(2,6,23,0.04);display:inline-block;cursor:pointer;outline:none}
+  .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:90}
+  .modal.open{display:flex}
+  .modal .img{max-width:92%;max-height:86%;border-radius:12px;background:white;padding:18px}
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr;gap:18px}
+    .navlinks{display:none}
+    .hamburger{display:inline-block}
+    .screens{flex-direction:row}
+    .features{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:520px){
+    .features{grid-template-columns:1fr}
+    .screenshot{height:200px}
+    .thumb{width:64px;height:116px}
+  }
+</style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </nav>
 
-  <div class="container">
-    <h1>📘 Welcome to MathKit</h1>
-    <p>
-      MathKit is your trusted offline math learning and solving companion, built specifically for Indian students and teachers. No ads, no tracking — just math.
-    </p>
-
-    <h2>🌟 What is MathKit?</h2>
-    <p>
-      MathKit is an offline-first math app designed to solve problems, explain concepts, and assist students from Class 6 to 12. With fast performance, it works even in remote villages with zero data usage.
-    </p>
-
-    <h2>📱 Key Features</h2>
-    <ul>
-      <li>Instant answers for arithmetic, algebra, geometry, trigonometry</li>
-      <li>Step-by-step explanations for selected chapters</li>
-      <li>Formula Library with 100+ key formulas for CBSE, ICSE, and State Boards</li>
-      <li>Offline scientific calculator mode</li>
-      <li>No ads, no tracking, no internet required</li>
-      <li>100% privacy-focused and child-safe</li>
-    </ul>
-
-    <h2>🎯 Who Should Use MathKit?</h2>
-    <ul>
-      <li><strong>Students:</strong> Practice daily homework or prepare for board exams</li>
-      <li><strong>Teachers:</strong> Use MathKit to double-check solutions or teach better</li>
-      <li><strong>Parents:</strong> Help your kids confidently solve homework at home</li>
-    </ul>
-
-    <h2>💡 Why MathKit Stands Out</h2>
-    <ul>
-      <li>Built for Bharat – lightweight, fast, and fully offline</li>
-      <li>Perfect for rural and low-connectivity areas</li>
-      <li>No background battery or data usage</li>
-      <li>Simple and clean user interface</li>
-      <li>Supports Hindi-English bilingual UI (coming soon)</li>
-    </ul>
-
-    <div class="testimonial">
-      “My son uses MathKit for his Class 10 prep. No internet needed, no ads – just clear answers. Highly recommended!”<br><strong>– Ramesh, Parent from Haryana</strong>
+<header>
+  <div class="navwrap">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">MK</div>
+      <div>
+        <div style="font-weight:800">MathKit</div>
+        <div style="font-size:12px;color:var(--muted)">Offline math solver</div>
+      </div>
     </div>
 
-    <div class="faq">
-      <h2>❓ Frequently Asked Questions</h2>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#screens">Screenshots</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy.html" target="_blank">Privacy</a>
+      <a class="cta-btn" href="https://indusappstore.com/app/mathkit" target="_blank">Get on Indus</a>
+    </nav>
 
-      <h3>Is MathKit free?</h3>
-      <p>Yes, MathKit is completely free to use with no hidden charges.</p>
-
-      <h3>Does MathKit work without internet?</h3>
-      <p>Yes. Once downloaded, all features work 100% offline.</p>
-
-      <h3>Is any user data collected?</h3>
-      <p>No. MathKit respects your privacy and does not collect or transmit any data.</p>
-
-      <h3>Does it support Hindi or regional languages?</h3>
-      <p>Currently in English. Hindi version coming soon.</p>
-    </div>
-
-    <div class="cta">
-      <!-- Add real link when live -->
-      <a href="#">📲 Coming Soon on Indus Appstore</a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button id="themeToggle" class="secondary" title="Toggle dark mode">🌙</button>
+      <button class="hamburger" id="burger" aria-label="Open menu">☰</button>
     </div>
   </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-heading">
+    <div>
+      <h1 id="hero-heading">MathKit — <span style="color:var(--accent)">Math, solved offline</span></h1>
+      <p class="lead">Fast, lightweight & privacy-first math solver for students (Class 6–12). No ads, works completely offline.</p>
+
+      <div class="feature-list">
+        <div class="pill">Offline-first</div>
+        <div class="pill">No Ads • No Tracking</div>
+        <div class="pill">CBSE & ICSE Formulas</div>
+      </div>
+
+      <div class="btns">
+        <a class="cta-btn" href="https://indusappstore.com/app/mathkit" target="_blank" role="button">📲 Download on Indus</a>
+        <a class="secondary" href="mailto:devshubham652@gmail.com" role="button">✉ Contact</a>
+      </div>
+
+      <div style="margin-top:22px">
+        <small class="small">Want early access? Subscribe and we’ll email release notes.</small>
+        <div class="subscribe">
+          <input id="email" type="email" placeholder="Your email address" aria-label="Email for updates" />
+          <button id="subscribeBtn" class="cta-btn">Subscribe</button>
+        </div>
+        <div id="subMessage" class="small" role="status" style="margin-top:10px"></div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <strong>Key highlights</strong>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <div style="min-width:160px">
+            <small class="small">✔ Step-by-step explanations</small>
+          </div>
+          <div style="min-width:160px">
+            <small class="small">✔ Formula library & calculator</small>
+          </div>
+          <div style="min-width:160px">
+            <small class="small">✔ Works offline with small binary size</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div class="screenshot" role="img" aria-label="MathKit app screenshot">
+        <div style="font-weight:800;font-size:20px">MathKit</div>
+        <small>Preview — tap thumbnails below</small>
+
+        <div class="screens" id="screens">
+          <div class="thumbs" id="thumbs">
+            <!-- Thumbs: clicking opens modal -->
+            <div class="thumb" tabindex="0" data-img="screenshot-1" aria-label="Open screenshot 1"></div>
+            <div class="thumb" tabindex="0" data-img="screenshot-2" aria-label="Open screenshot 2"></div>
+            <div class="thumb" tabindex="0" data-img="screenshot-3" aria-label="Open screenshot 3"></div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+  </section>
+
+  <section id="features" class="features">
+    <div class="feature card">
+      <div style="font-size:22px;font-weight:800">Lightning Solver</div>
+      <p class="small">Solve arithmetic, algebra and geometry problems instantly with precise steps.</p>
+    </div>
+    <div class="feature card">
+      <div style="font-size:22px;font-weight:800">Formula Library</div>
+      <p class="small">100+ formulas for CBSE/ICSE and state boards — easy lookup and examples.</p>
+    </div>
+    <div class="feature card">
+      <div style="font-size:22px;font-weight:800">Offline & Small</div>
+      <p class="small">Designed for low-connectivity regions; minimal storage and no background data.</p>
+    </div>
+    <div class="feature card">
+      <div style="font-size:22px;font-weight:800">Privacy First</div>
+      <p class="small">No user tracking, no analytics SDKs, and no ads — usable by children safely.</p>
+    </div>
+    <div class="feature card">
+      <div style="font-size:22px;font-weight:800">Teacher Tools</div>
+      <p class="small">Quick-check homework answers and printable steps for classroom use.</p>
+    </div>
+    <div class="feature card">
+      <div style="font-size:22px;font-weight:800">Bilingual</div>
+      <p class="small">Hindi support coming soon — interface designed for Indian students.</p>
+    </div>
+  </section>
+
+  <section id="screens" style="margin-top:28px">
+    <h2>Screenshots</h2>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:12px">
+      <div class="card" style="flex:1;min-width:220px">
+  <img src="screenshot-1.jpeg" alt="MathKit screenshot 1" style="width:100%;border-radius:8px" />
+</div>
+<div class="card" style="flex:1;min-width:220px">
+  <img src="screenshot-2.jpeg" alt="MathKit screenshot 2" style="width:100%;border-radius:8px" />
+</div>
+<div class="card" style="flex:1;min-width:220px">
+  <img src="screenshot-3.jpeg" alt="MathKit screenshot 3" style="width:100%;border-radius:8px" />
+</div>
+
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2 style="margin-top:12px">Frequently Asked Questions</h2>
+
+    <div class="accordion card" role="tablist" aria-label="Frequently asked questions">
+      <button aria-expanded="false">Is MathKit free?</button>
+      <div class="panel">Yes — MathKit is completely free to use with no ads and no in-app purchases in the initial release.</div>
+
+      <button aria-expanded="false">Does MathKit work offline?</button>
+      <div class="panel">Yes. All core features work offline after initial download. No network required for solver & formulas.</div>
+
+      <button aria-expanded="false">Is any data collected?</button>
+      <div class="panel">No personal data is collected. For transparency, our Privacy Policy explains exactly what is and isn't stored.</div>
+
+      <button aria-expanded="false">I want early access / bugs</button>
+      <div class="panel">Email us at <a href="mailto:devshubham652@gmail.com">devshubham652@gmail.com</a> — we reply quickly and appreciate testers.</div>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 MathKit by Shubham. Made in India 🇮🇳 | Contact: devshubham652@gmail.com
+    <div style="max-width:900px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center">
+        <div style="text-align:left">
+          <strong>MathKit</strong><div class="small">Offline math solver • Made in India 🇮🇳</div>
+        </div>
+        <div style="text-align:right">
+          <div class="small">© 2025 MathKit</div>
+          <div style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> • <a href="mailto:devshubham652@gmail.com">Contact</a></div>
+        </div>
+      </div>
+    </div>
   </footer>
+</main>
+
+<!-- full-screen modal for images -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Screenshot preview">
+  <div class="img card" id="modalContent" tabindex="-1">
+    <button id="closeModal" style="float:right;border:0;background:transparent;font-size:20px;cursor:pointer">✕</button>
+    <div id="modalInner" style="padding-top:6px"></div>
+  </div>
+</div>
+
+<button id="backTop" class="backtop" aria-label="Back to top">↑</button>
+
+<!-- Interactivity -->
+<script>
+  // theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('mk-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light');
+  themeToggle.textContent = (stored === 'dark') ? '☀' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('mk-theme', next);
+    themeToggle.textContent = next === 'dark' ? '☀' : '🌙';
+  });
+
+  // hamburger shows nav on mobile
+  const burger = document.getElementById('burger');
+  burger?.addEventListener('click', () => {
+    const nav = document.querySelector('.navlinks');
+    if (!nav) return;
+    nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.background = 'transparent';
+    nav.style.position = 'absolute';
+    nav.style.right = '18px';
+    nav.style.top = '66px';
+    nav.style.padding = '14px';
+    nav.style.zIndex = '60';
+    nav.style.borderRadius = '10px';
+  });
+
+  // accordion behavior
+  document.querySelectorAll('.accordion button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const panel = btn.nextElementSibling;
+      panel.classList.toggle('open');
+    });
+  });
+
+  // subscribe form (no backend) — sends mailto for now
+  const subscribeBtn = document.getElementById('subscribeBtn');
+  const emailInput = document.getElementById('email');
+  const subMessage = document.getElementById('subMessage');
+  subscribeBtn.addEventListener('click', () => {
+    const email = emailInput.value.trim();
+    subMessage.style.color = 'var(--muted)';
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      subMessage.textContent = 'Please enter a valid email.';
+      subMessage.style.color = '#e06a6a';
+      return;
+    }
+    // create a mailto to collect signups for now
+    const subject = encodeURIComponent('MathKit Early Access Signup');
+    const body = encodeURIComponent('Please add ' + email + ' to the early access list.\n\nGenerated via website signup.');
+    window.location.href = `mailto:devshubham652@gmail.com?subject=${subject}&body=${body}`;
+    subMessage.textContent = 'Opening your email app to complete signup...';
+    subMessage.style.color = 'green';
+  });
+
+  // thumbs open modal
+  const thumbs = document.getElementById('thumbs');
+  function createSVG(label, color) {
+    return `data:image/svg+xml;utf8,` + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='1400'><rect rx='18' width='100%' height='100%' fill='${color}'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Segoe UI' font-size='48' fill='#fff'>${label}</text></svg>`);
+  }
+  // fill thumbs with images (data URIs)
+  // --- replace placeholder logic with real image paths ---
+const screenshotPaths = [
+  'screenshot-1.jpeg',
+  'screenshot-2.jpeg',
+  'screenshot-3.jpeg'
+];
+
+const thumbNodes = document.querySelectorAll('.thumb');
+thumbNodes.forEach((el, idx) => {
+  const img = document.createElement('img');
+  img.src = screenshotPaths[idx] || screenshotPaths[0]; // fallback if fewer thumbs
+  img.alt = 'Screenshot ' + (idx+1);
+  img.style.width = '100%';
+  img.style.height = '100%';
+  img.style.objectFit = 'cover';
+  img.style.borderRadius = '8px';
+
+  // graceful on error
+  img.onerror = () => {
+    el.innerHTML = '<div style="padding:10px;color:var(--muted)">Image not found</div>';
+  };
+
+  el.appendChild(img);
+
+  // open modal with the same path
+  el.addEventListener('click', () => openModal(img.src));
+  el.addEventListener('keypress', (e) => { if (e.key === 'Enter') openModal(img.src); });
+});
+
+
+  // modal open/close
+  const modal = document.getElementById('modal');
+  const modalInner = document.getElementById('modalInner');
+  const closeModal = document.getElementById('closeModal');
+  function openModal(src) {
+    modalInner.innerHTML = `<img src="${src}" alt="Preview" style="max-width:100%;max-height:80vh;border-radius:8px">`;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    closeModal.focus();
+  }
+  function closeModalFn() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  }
+  closeModal.addEventListener('click', closeModalFn);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModalFn(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModalFn(); });
+
+  // back to top
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) backTop.style.display = 'block'; else backTop.style.display = 'none';
+  });
+  backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  // smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{ e.preventDefault(); const target=document.querySelector(a.getAttribute('href')); if(target) target.scrollIntoView({behavior:'smooth',block:'start'}); });
+  });
+
+  // accessibility: ensure focus trap when modal open (basic)
+  modal.addEventListener('keydown', (e)=> {
+    if(e.key === 'Tab') {
+      e.preventDefault();
+      closeModal.focus();
+    }
+  });
+
+  // small analytics-friendly console message
+  console.info('MathKit landing loaded — static demo site.');
+</script>
 </body>
 </html>
